@@ -13,7 +13,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 
-public class MyGdxGame extends Game {
+public class Core extends Game {
 	
 	// render
 	private SpriteBatch batch;
@@ -21,7 +21,7 @@ public class MyGdxGame extends Game {
 	// box2d
 	public static final float TIME_STEP = 0.01f;
 	
-	private World world;
+	public static World world;
 	private float accumulator = 0;
 	private Box2DDebugRenderer debugRenderer;
 	
