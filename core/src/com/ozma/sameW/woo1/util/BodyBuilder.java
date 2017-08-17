@@ -28,7 +28,7 @@ public class BodyBuilder {
 
 		// body shape
 		PolygonShape phyShape = new PolygonShape();
-		phyShape.setAsBox(width, height);
+		phyShape.setAsBox(width * Constants.MPP, height * Constants.MPP);
 
 		// fixture def
 		FixtureDef fixtureDef = makeFixtureDef(phyShape);

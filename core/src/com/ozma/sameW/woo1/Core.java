@@ -19,13 +19,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ozma.sameW.woo1.character.Player;
+import com.ozma.sameW.woo1.util.Constants;
 
 public class Core extends Game {
 	
 	// render
-	private static float ppm = 2f;
-	private static float mpp = 1f/ppm;
-	
 	private SpriteBatch batch;
 	public OrthographicCamera camera;
 	
@@ -45,7 +43,7 @@ public class Core extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		camera = new OrthographicCamera(Gdx.graphics.getWidth() * mpp, Gdx.graphics.getHeight() * mpp);
+		camera = new OrthographicCamera(Gdx.graphics.getWidth() * Constants.MPP, Gdx.graphics.getHeight() * Constants.MPP);
 		
 		// map
 		map = new TmxMapLoader().load("assets/map/test.tmx");
@@ -73,11 +71,16 @@ public class Core extends Game {
 		batch.begin();
 		
 		camera.update();
+		
+		
 		mapRenderer.render();
 		debugRenderer.render(world, camera.combined);
 		
 		
 		batch.end();
+		
+		stage.act();
+		stage.draw();
 	}
 	
 	@Override
