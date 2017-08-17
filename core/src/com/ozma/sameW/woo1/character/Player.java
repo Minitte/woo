@@ -12,13 +12,17 @@ import com.ozma.sameW.woo1.util.BodyBuilder;
 public class Player extends Character {
 
 	private float walkForce = 100f;
-
+	private float spriteXOffset, spriteYOffset;
+	
 	// input
 	private boolean keyUp, keyDown, keyLeft, keyRight;
 
 	public Player(Vector2 pos) {
-		Texture texture = new Texture(Gdx.files.local("assets/character/player.png"));
+		Texture texture = new Texture(Gdx.files.internal("assets/character/player.png"));
 		sprite = new Sprite(texture);
+		spriteXOffset = sprite.getWidth() * 0.5f;
+		spriteYOffset = sprite.getHeight() * 0.5f;
+		
 
 		body = BodyBuilder.makeRectBody(pos, sprite.getWidth(), sprite.getWidth(), BodyType.DynamicBody);
 
@@ -27,12 +31,12 @@ public class Player extends Character {
 
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		batch.draw(sprite, body.getPosition().x, body.getPosition().y);
+		batch.draw(sprite, body.getPosition().x - spriteXOffset, body.getPosition().y - spriteYOffset);
 	}
 
 	@Override
 	public void act(float delta) {
-		processInput();
+		processInput(); 
 	}
 
 	private void processInput() {
