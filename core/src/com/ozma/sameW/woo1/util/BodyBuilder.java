@@ -11,7 +11,7 @@ import com.ozma.sameW.woo1.Core;
 
 public class BodyBuilder {
 
-	private static float density = 0.1f;
+	private static float density = 0.0001f;
 	
 	/**
 	 * Makes a basic rect body and returns it
