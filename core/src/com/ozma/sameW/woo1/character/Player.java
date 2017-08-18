@@ -1,6 +1,7 @@
 package com.ozma.sameW.woo1.character;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,7 +12,7 @@ import com.ozma.sameW.woo1.util.BodyBuilder;
 
 public class Player extends Character {
 
-	private float walkForce = 100f;
+	private float walkForce = 400f;
 	private float spriteXOffset, spriteYOffset;
 	
 	// input
@@ -25,6 +26,7 @@ public class Player extends Character {
 		
 
 		body = BodyBuilder.makeRectBody(pos, sprite.getWidth(), sprite.getWidth(), BodyType.DynamicBody);
+		body.setLinearDamping(1f);
 
 		setTouchable(Touchable.enabled);
 	}
@@ -36,7 +38,15 @@ public class Player extends Character {
 
 	@Override
 	public void act(float delta) {
+		checkInput();
 		processInput(); 
+	}
+	
+	private void checkInput() {
+		keyUp = Gdx.input.isKeyPressed(Keys.UP);
+		keyDown = Gdx.input.isKeyPressed(Keys.DOWN);
+		keyLeft = Gdx.input.isKeyPressed(Keys.LEFT);
+		keyRight = Gdx.input.isKeyPressed(Keys.RIGHT);
 	}
 
 	private void processInput() {
