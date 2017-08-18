@@ -45,10 +45,7 @@ public class Core extends Game {
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera(Gdx.graphics.getWidth() * Constants.MPP, Gdx.graphics.getHeight() * Constants.MPP);
 		
-		// map
-		map = new TmxMapLoader().load("assets/map/test.tmx");
-		mapRenderer = new OrthoCachedTiledMapRenderer(map);
-		mapRenderer.setView(camera);
+		
 		
 		// box2d
 		world = new World(new Vector2(0, 0), true);
@@ -58,6 +55,11 @@ public class Core extends Game {
 		// scene2d
 		stage = new Stage(new ScreenViewport(camera), batch);
 		stage.addActor(new Player(new Vector2(100f, 100f)));
+		
+		// map
+		map = new TmxMapLoader().load("assets/map/test.tmx");
+		mapRenderer = new OrthoCachedTiledMapRenderer(map);
+		mapRenderer.setView(camera);
 	}
 
 	@Override
