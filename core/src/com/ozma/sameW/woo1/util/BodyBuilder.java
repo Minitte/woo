@@ -11,7 +11,7 @@ import com.ozma.sameW.woo1.Core;
 
 public class BodyBuilder {
 
-	private static float density = 0.0001f;
+	private static float density = 0.1f;
 	
 	/**
 	 * Makes a basic rect body and returns it
@@ -28,7 +28,7 @@ public class BodyBuilder {
 
 		// body shape
 		PolygonShape phyShape = new PolygonShape();
-		phyShape.setAsBox(width * Constants.MPP, height * Constants.MPP);
+		phyShape.setAsBox(width / Constants.PPM, height / Constants.PPM);
 
 		// fixture def
 		FixtureDef fixtureDef = makeFixtureDef(phyShape);
@@ -55,7 +55,7 @@ public class BodyBuilder {
 		// body def
 		BodyDef bDef = new BodyDef();
 		bDef.type = bodyType;
-		bDef.position.set(pos.x, pos.y);
+		bDef.position.set(pos.x / Constants.PPM, pos.y / Constants.PPM);
 		bDef.fixedRotation = false;
 
 		// actual body
@@ -74,7 +74,7 @@ public class BodyBuilder {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = phyShape;
 		fixtureDef.density = density;
-		// fixtureDef.friction = 0;
+//		fixtureDef.friction = 1f;
 		// fixtureDef.restitution = 0.1f;
 
 		return fixtureDef;
