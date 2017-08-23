@@ -34,6 +34,7 @@ public class Player extends GameObject {
 				BodyType.DynamicBody);
 		body.setLinearDamping(1f);
 		body.setFixedRotation(true);
+		body.getFixtureList().get(0).setUserData(this);
 
 		setTouchable(Touchable.enabled);
 	}

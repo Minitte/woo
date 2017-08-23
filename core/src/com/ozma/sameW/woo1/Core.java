@@ -106,8 +106,10 @@ public class Core extends Game {
             public void preSolve(Contact contact, Manifold oldManifold) {
             	GameObject a = (GameObject) contact.getFixtureA().getUserData();
                 GameObject b = (GameObject) contact.getFixtureB().getUserData();
-                a.processMessage(b, Message.TOUCH.id);
-                b.processMessage(a, Message.TOUCH.id);
+                if(a != null && b != null) {
+	                a.processMessage(b, Message.TOUCH.id);
+	                b.processMessage(a, Message.TOUCH.id);
+                }
                 
             }
             
