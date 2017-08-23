@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -17,20 +15,18 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.ozma.sameW.woo1.character.Player;
-import com.ozma.sameW.woo1.util.Constants;
+import com.ozma.sameW.woo1.map.MapManager;
 
 public class Core extends Game {
 	
 	// render
-	private SpriteBatch batch;
-	public OrthographicCamera camera;
+	public static SpriteBatch batch;
+	public static OrthographicCamera camera;
 	
-	private TiledMap map;
-	private TiledMapRenderer mapRenderer;
+	public static TiledMap map;
+	public static TiledMapRenderer mapRenderer;
 	
-	private Stage stage;
+	public static Stage stage;
 	
 	// box2d
 	public static final float TIME_STEP = 0.01f;
@@ -43,22 +39,17 @@ public class Core extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		camera = new OrthographicCamera(Gdx.graphics.getWidth() * Constants.MPP, Gdx.graphics.getHeight() * Constants.MPP);
-		
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.zoom = 0.5f;
 		
 		
 		// box2d
-		world = new World(new Vector2(0, 0), true);
+		world = new World(new Vector2(0f, -50f), true);
 		debugRenderer = new Box2DDebugRenderer();
 		setUpContactListener();
 		
-		// scene2d
-		stage = new Stage(new ScreenViewport(camera), batch);
-		stage.addActor(new Player(new Vector2(100f, 100f)));
-		
 		// map
-		map = new TmxMapLoader().load("assets/map/test.tmx");
-		mapRenderer = new OrthoCachedTiledMapRenderer(map);
+		new MapManager().loadMap("assets/map/test.tmx");
 		mapRenderer.setView(camera);
 	}
 
@@ -70,16 +61,14 @@ public class Core extends Game {
 		// draw
 		Gdx.gl.glClearColor(1, 1, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
+		batch.setProjectionMatrix(camera.combined);
+		
 		
 		camera.update();
-		
-		
+		mapRenderer.setView(camera);
 		mapRenderer.render();
+		
 		debugRenderer.render(world, camera.combined);
-		
-		
-		batch.end();
 		
 		stage.act();
 		stage.draw();
