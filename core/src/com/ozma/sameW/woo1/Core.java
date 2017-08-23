@@ -15,6 +15,8 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.ozma.sameW.woo1.character.GameObject;
+import com.ozma.sameW.woo1.character.util.Message;
 import com.ozma.sameW.woo1.map.MapManager;
 
 public class Core extends Game {
@@ -102,7 +104,10 @@ public class Core extends Game {
             
             @Override
             public void preSolve(Contact contact, Manifold oldManifold) {
-                // TODO Auto-generated method stub
+            	GameObject a = (GameObject) contact.getFixtureA().getUserData();
+                GameObject b = (GameObject) contact.getFixtureB().getUserData();
+                a.processMessage(b, Message.TOUCH.id);
+                b.processMessage(a, Message.TOUCH.id);
                 
             }
             
