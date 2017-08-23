@@ -12,7 +12,7 @@ import com.ozma.sameW.woo1.Core;
 import com.ozma.sameW.woo1.util.BodyBuilder;
 import com.ozma.sameW.woo1.util.Constants;
 
-public class Player extends Character {
+public class Player extends GameObject {
 
 	private static float walkForce = 800f;
 	private static float iniJumpForce = 5000f;
@@ -89,5 +89,11 @@ public class Player extends Character {
 		} else {
 			body.setLinearDamping(5f);
 		}
+	}
+
+	@Override
+	public void processMessage(GameObject sender, int msg) {
+		// TODO Auto-generated method stub
+		
 	}
 }
