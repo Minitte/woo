@@ -11,7 +11,10 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.ozma.sameW.woo1.Core;
+import com.ozma.sameW.woo1.character.SolidWall;
 import com.ozma.sameW.woo1.util.BodyBuilder;
+import com.ozma.sameW.woo1.util.Constants;
 
 /**
  * http://gamedev.stackexchange.com/questions/66924/how-can-i-convert-a-tilemap-to-a-box2d-world
@@ -45,7 +48,9 @@ public class MapBodyBuilder {
             if (object instanceof RectangleMapObject) {
             	
             	Rectangle r = ((RectangleMapObject) object).getRectangle();
-            	bodies.add(BodyBuilder.makeRectBody(new Vector2(r.x + r.width/2f, r.y + r.height/2f), r.width/2f, r.height/2f, BodyType.StaticBody));
+            	Body wall = BodyBuilder.makeRectBody(new Vector2(r.x + r.width/2f, r.y + r.height/2f), r.width/2f, r.height/2f, BodyType.StaticBody);
+            	bodies.add(wall);
+            	Core.stage.addActor(new SolidWall(wall, r.height/2f/Constants.PPM));
             	
             } else if (object instanceof EllipseMapObject) {
             	
