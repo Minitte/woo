@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.ozma.sameW.woo1.Core;
+import com.ozma.sameW.woo1.character.util.Message;
 import com.ozma.sameW.woo1.util.BodyBuilder;
 import com.ozma.sameW.woo1.util.Constants;
 
@@ -16,9 +17,12 @@ public class Player extends GameObject {
 
 	private static float walkForce = 800f;
 	private static float iniJumpForce = 5000f;
-	private static float holdJumpForce = 1000f;
+	private static float holdJumpForce = 4000f;
+	private static int jumpTickMax = 10;
 	
+	private int jumpTick;
 	private float spriteXOffset, spriteYOffset;
+	private boolean grounded;
 
 	// input
 	private boolean keyUp, keyDown, keyLeft, keyRight;
@@ -73,8 +77,13 @@ public class Player extends GameObject {
 	}
 
 	private void processInput() {
-		if (keyUp) {
-			body.applyForceToCenter(0, iniJumpForce, true);
+		if (keyUp && (grounded || jumpTick < jumpTickMax)) {
+			grounded = false;
+			jumpTick++;
+			if (grounded) 
+				body.applyForceToCenter(0, iniJumpForce, true);
+			else
+				body.applyForceToCenter(0, holdJumpForce, true);
 		}
 
 		if (keyLeft) {
@@ -90,11 +99,20 @@ public class Player extends GameObject {
 		} else {
 			body.setLinearDamping(5f);
 		}
+		
+		if (!keyUp) {
+			jumpTick = 1000;
+		}
 	}
 
 	@Override
 	public void processMessage(GameObject sender, int msg) {
-		// TODO Auto-generated method stub
+		if (msg == Message.LAND.id) {
+			grounded = true;
+			jumpTick = 0;
+		} else if (msg == Message.TOUCH.id) {
+			// TODO
+		}
 		
 	}
 }
