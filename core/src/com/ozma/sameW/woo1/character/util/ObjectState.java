@@ -1,15 +1,15 @@
 package com.ozma.sameW.woo1.character.util;
 
-public enum Message {
-	
-	TOUCH(1), LAND(2);
+public enum ObjectState {
+
+	NONE(0), GROUND(1), AIR(2), STUN(3);
 	
 	public final int id;
 
 	/**
 	 * @param id
 	 */
-	private Message(int id) {
+	private ObjectState(int id) {
 		this.id = id;
 	}
 }
