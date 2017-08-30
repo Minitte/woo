@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public abstract class GameObject extends Actor{
 	protected Body body;
-	protected Sprite sprite;
+	public Sprite sprite;
 	
 	public abstract void processMessage(com.ozma.sameW.woo1.character.GameObject sender, int msg);
 }

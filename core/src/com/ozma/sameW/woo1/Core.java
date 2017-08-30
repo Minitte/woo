@@ -46,7 +46,7 @@ public class Core extends Game {
 		
 		
 		// box2d
-		world = new World(new Vector2(0f, -50f), true);
+		world = new World(new Vector2(0f, -100f), true);
 		debugRenderer = new Box2DDebugRenderer();
 		setUpContactListener();
 		
@@ -59,6 +59,7 @@ public class Core extends Game {
 	public void render () {
 		// act
 		doPhysicsStep(Gdx.graphics.getDeltaTime());
+		stage.act();
 		
 		// draw
 		Gdx.gl.glClearColor(1, 1, 0, 1);
@@ -72,7 +73,6 @@ public class Core extends Game {
 		
 		debugRenderer.render(world, camera.combined);
 		
-		stage.act();
 		stage.draw();
 	}
 	
@@ -106,7 +106,7 @@ public class Core extends Game {
             public void preSolve(Contact contact, Manifold oldManifold) {
             	GameObject a = (GameObject) contact.getFixtureA().getUserData();
                 GameObject b = (GameObject) contact.getFixtureB().getUserData();
-                if(a != null && b != null) {
+                if (a != null && b != null) {
 	                a.processMessage(b, Message.TOUCH.id);
 	                b.processMessage(a, Message.TOUCH.id);
                 }
