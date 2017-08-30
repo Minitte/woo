@@ -37,17 +37,18 @@ public class MapManager {
 		// create mapData object
 		curMapData = new MapData(newMap, mapName);
 		
-		// build walls and lights
-		buildMapSolids(newMap);
-		
-		// set camera on map
-		Core.mapRenderer = new OrthogonalTiledMapRenderer(newMap, Core.batch);
-		
 		// wipe stage
 		if(Core.stage != null)
 		Core.stage.dispose();
 		Core.stage = new Stage(new ScreenViewport(Core.camera), Core.batch);
 		Core.stage.addActor(new Player(new Vector2(100f, 100f)));
+
+		// build walls and lights
+		buildMapSolids(newMap);
+		
+		// set camera on map
+		Core.mapRenderer = new OrthogonalTiledMapRenderer(newMap, Core.batch);
+
 	}
 	
 	/**
