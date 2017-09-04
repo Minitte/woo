@@ -11,11 +11,12 @@ public abstract class GameObject extends Actor{
 	public abstract void processMessage(com.ozma.sameW.woo1.character.GameObject sender, int msg);
 
 	/**
-	 * Rebuilds the game object's body at the given location
+	 * teleport the game object by rebuilding body it's  at the given location
+	 * Warning: Bodies can not be modified during contactListner cycle or world act cycles/
 	 * @param x
 	 * @param y
 	 */
-	public abstract void rebuildBody(float x, float y);
+	public abstract void teleport(float x, float y);
 	
     public Body getBody() {
         return body;

@@ -134,7 +134,7 @@ public class Player extends GameObject {
 	}
 
     @Override
-    public void rebuildBody(float x, float y) {
+    public void teleport(float x, float y) {
         teleported = true;
         tpX = x;
         tpY = y;

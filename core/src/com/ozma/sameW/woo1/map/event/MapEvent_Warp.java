@@ -27,7 +27,7 @@ public class MapEvent_Warp extends GameObject{
             
             // move body
             Vector2 dest = Core.mapManager.curMapData.getEntrances().get(destID);
-            sender.rebuildBody(dest.x, dest.y);
+            sender.teleport(dest.x, dest.y);
             
         }
         

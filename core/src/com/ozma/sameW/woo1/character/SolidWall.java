@@ -22,7 +22,7 @@ public class SolidWall extends GameObject {
 	}
 
     @Override
-    public void rebuildBody(float x, float y) {
+    public void teleport(float x, float y) {
         // TODO Auto-generated method stub
         
     }
