@@ -21,6 +21,8 @@ import com.ozma.sameW.woo1.map.MapManager;
 
 public class Core extends Game {
 	
+    public static MapManager mapManager;
+    
 	// render
 	public static SpriteBatch batch;
 	public static OrthographicCamera camera;
@@ -51,8 +53,10 @@ public class Core extends Game {
 		setUpContactListener();
 		
 		// map
-		new MapManager().loadMap("assets/map/test.tmx");
+		mapManager = new MapManager();
+		mapManager.loadMap("assets/map/test.tmx");
 		mapRenderer.setView(camera);
+		
 	}
 
 	@Override
