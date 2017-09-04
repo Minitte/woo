@@ -1,15 +1,22 @@
 package com.ozma.sameW.woo1.map;
 
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ozma.sameW.woo1.Core;
 import com.ozma.sameW.woo1.character.Player;
+import com.ozma.sameW.woo1.map.event.MapEvent_Warp;
+import com.ozma.sameW.woo1.util.BodyBuilder;
 
 public class MapManager {
 	
@@ -18,7 +25,7 @@ public class MapManager {
 	private final static String ENEMY_LV_KEY = "level";
 	
 	private Array<Body> curBodies;
-	private MapData curMapData;
+	public MapData curMapData;
 	
 	public MapManager() {
 		curBodies = new Array<Body>();
@@ -46,9 +53,35 @@ public class MapManager {
 		// build walls and lights
 		buildMapSolids(newMap);
 		
+		// build entry and warp
+		buildMapEvents(newMap);
+		
 		// set camera on map
 		Core.mapRenderer = new OrthogonalTiledMapRenderer(newMap, Core.batch);
 
+	}
+	
+	private void buildMapEvents(TiledMap map) {
+        // get all of the map objects from boundary layer
+        MapObjects objects = map.getLayers().get("event").getObjects();
+        
+        for(MapObject object : objects) {
+            // make body and stuff
+            int type = object.getProperties().get("type", Integer.class);
+            switch(type) {
+                case 1:
+                    Rectangle r = ((RectangleMapObject) object).getRectangle();
+                    Body body = BodyBuilder.makeRectBody(new Vector2(r.x + r.width/2f, r.y + r.height/2f), r.width/2f, r.height/2f, BodyType.KinematicBody);
+                    int destID = object.getProperties().get("value", Integer.class);
+                    Core.stage.addActor(new MapEvent_Warp(body, destID));
+                    break;
+                default:
+                    System.out.println("Unknow event somewhere");
+                    break;
+            }
+            
+            
+        }
 	}
 	
 	/**
