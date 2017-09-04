@@ -21,4 +21,10 @@ public class SolidWall extends GameObject {
 			sender.processMessage(this, Message.LAND.id);
 	}
 
+    @Override
+    public void rebuildBody(float x, float y) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

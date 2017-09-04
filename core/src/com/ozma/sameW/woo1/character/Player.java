@@ -23,6 +23,10 @@ public class Player extends GameObject {
 	private int jumpTick;
 	private float spriteXOffset, spriteYOffset;
 	private boolean grounded;
+	
+	// move body on next tick
+	private boolean teleported;
+	private float tpX, tpY;
 
 	// input
 	private boolean keyUp, keyDown, keyLeft, keyRight;
@@ -45,15 +49,28 @@ public class Player extends GameObject {
 
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		 batch.draw(sprite, body.getPosition().x * Constants.PPM - spriteXOffset,
-		 body.getPosition().y * Constants.PPM - spriteYOffset);
+		 batch.draw(sprite, getX() - spriteXOffset, getY() - spriteYOffset);
 	}
 
 	@Override
 	public void act(float delta) {
-		checkInput();
+	    
+	    if (teleported) {
+	        teleported = false;
+	        Core.world.destroyBody(body);
+	        body = BodyBuilder.makeRectBody(new Vector2(tpX, tpY), sprite.getWidth()/2f, sprite.getHeight()/2f,
+	                BodyType.DynamicBody);
+	        body.setLinearDamping(1f);
+	        body.setFixedRotation(true);
+	        body.getFixtureList().get(0).setUserData(this);
+	    }
+	    
+	    setX(body.getPosition().x * Constants.PPM);
+        setY(body.getPosition().y * Constants.PPM);
+	    checkInput();
 		processInput();
 		updateCamera();
+		
 	}
 
 	private void checkInput() {
@@ -67,8 +84,8 @@ public class Player extends GameObject {
 	 * Smoothly moves the camera with this player.
 	 */
 	private void updateCamera() {
-		float moveX = body.getPosition().x * Constants.PPM - Core.camera.position.x;
-		float moveY = body.getPosition().y * Constants.PPM - Core.camera.position.y;
+		float moveX = getX() - Core.camera.position.x;
+		float moveY = getY() - Core.camera.position.y;
 
 		if ((int) moveX != 0)
 			Core.camera.position.x += moveX * 0.08;
@@ -115,4 +132,11 @@ public class Player extends GameObject {
 		}
 		
 	}
+
+    @Override
+    public void rebuildBody(float x, float y) {
+        teleported = true;
+        tpX = x;
+        tpY = y;
+    }
 }
