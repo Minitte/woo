@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class MapData {
 
-	private static final String ENTRANCE_LAYER_NAME = "entrance";
+	private static final String ENTRANCE_LAYER_NAME = "entry";
 	private static final String ENTRANCE_ID_PROPERTY = "id";
 
 	private final String mapName;
@@ -31,7 +31,7 @@ public class MapData {
 		this.mapName = mapName;
 		this.map = map;
 		entrances = new HashMap<Integer, Vector2>();
-//		loadEntrance();
+		loadEntrance();
 	}
 
 	/**

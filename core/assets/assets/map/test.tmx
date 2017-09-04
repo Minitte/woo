@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" nextobjectid="7">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="16" tileheight="16" nextobjectid="11">
  <tileset firstgid="1" name="kenney_16x16" tilewidth="16" tileheight="16" tilecount="6912" columns="64">
   <image source="tiles/kenney_16x16.png" trans="ff00ff" width="1024" height="1728"/>
  </tileset>
@@ -71,7 +71,24 @@
 1519,1519,1519,1519,1519,1519,1520,1519,1519,1519,1520,1519,1520,1519,1519,1519,1519,1519,1519,1519,1519,1519,1519,1519,1520,1519,1519,1519,1520,1519
 </data>
  </layer>
- <objectgroup name="block">
+ <objectgroup name="entry">
+  <object id="9" x="401.447" y="215.93" width="24.7867" height="17.16">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="event">
+  <object id="8" x="431.86" y="380.857" width="56.2467" height="34.32">
+   <properties>
+    <property name="enableOther" type="bool" value="true"/>
+    <property name="enablePlayer" type="bool" value="true"/>
+    <property name="type" type="int" value="1"/>
+    <property name="value" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="block" visible="0">
   <object id="1" x="0.16667" y="416.121" width="479.5" height="21.8788"/>
   <object id="5" x="383.932" y="351.886" width="47.5682" height="69.3636"/>
  </objectgroup>
