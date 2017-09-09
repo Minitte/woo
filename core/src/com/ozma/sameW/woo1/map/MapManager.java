@@ -15,6 +15,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ozma.sameW.woo1.Core;
 import com.ozma.sameW.woo1.character.Player;
+import com.ozma.sameW.woo1.map.event.MapEvent_Death;
+import com.ozma.sameW.woo1.map.event.MapEvent_Goal;
 import com.ozma.sameW.woo1.map.event.MapEvent_Warp;
 import com.ozma.sameW.woo1.util.BodyBuilder;
 
@@ -71,14 +73,20 @@ public class MapManager {
         for(MapObject object : objects) {
             // make body and stuff
             int type = object.getProperties().get("type", Integer.class);
+            Rectangle r = ((RectangleMapObject) object).getRectangle();
+            Body body = BodyBuilder.makeRectBody(new Vector2(r.x + r.width/2f, r.y + r.height/2f), r.width/2f, r.height/2f, BodyType.KinematicBody);
             switch(type) {
                 case 1:
-                    Rectangle r = ((RectangleMapObject) object).getRectangle();
-                    Body body = BodyBuilder.makeRectBody(new Vector2(r.x + r.width/2f, r.y + r.height/2f), r.width/2f, r.height/2f, BodyType.KinematicBody);
                     int destID = object.getProperties().get("value", Integer.class);
                     Core.stage.addActor(new MapEvent_Warp(body, destID));
                     break;
+                case 2:
+                    Core.stage.addActor(new MapEvent_Death(body));
+                    break;
+                case 3:
+                    Core.stage.addActor(new MapEvent_Goal(body));
                 default:
+                    Core.world.destroyBody(body);
                     System.out.println("Unknow event somewhere");
                     break;
             }
