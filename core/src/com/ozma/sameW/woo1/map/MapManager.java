@@ -85,6 +85,7 @@ public class MapManager {
                     break;
                 case 3:
                     Core.stage.addActor(new MapEvent_Goal(body));
+                    break;
                 default:
                     Core.world.destroyBody(body);
                     System.out.println("Unknow event somewhere");
