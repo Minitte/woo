@@ -21,7 +21,6 @@ public class ThinWall extends GameObject {
         if (sender.body.getPosition().y
                 - sender.sprite.getHeight() / 2f / Constants.PPM >= bodyUpperY)
             sender.processMessage(this, Message.LAND.id);
-        System.out.println("Touched mee: " + msg);
     }
 
     @Override
