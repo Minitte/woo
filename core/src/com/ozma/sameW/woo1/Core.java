@@ -16,10 +16,10 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.ozma.sameW.woo1.character.GameObject;
-import com.ozma.sameW.woo1.character.ThinWall;
 import com.ozma.sameW.woo1.character.util.Message;
 import com.ozma.sameW.woo1.map.MapManager;
 import com.ozma.sameW.woo1.map.event.MapEvent_Effect;
+import com.ozma.sameW.woo1.map.object.ThinWall;
 
 public class Core extends Game {
 	

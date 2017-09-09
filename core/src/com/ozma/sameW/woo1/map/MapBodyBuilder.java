@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.ozma.sameW.woo1.Core;
 import com.ozma.sameW.woo1.map.object.SolidWall;
+import com.ozma.sameW.woo1.map.object.ThinWall;
 import com.ozma.sameW.woo1.util.BodyBuilder;
 import com.ozma.sameW.woo1.util.Constants;
 
@@ -46,12 +47,15 @@ public class MapBodyBuilder {
 
     		// make body
             if (object instanceof RectangleMapObject) {
-            	
+            	boolean thin = object.getProperties().get("thin", Boolean.class) != null ? true : false;
             	Rectangle r = ((RectangleMapObject) object).getRectangle();
             	Body wall = BodyBuilder.makeRectBody(new Vector2(r.x + r.width/2f, r.y + r.height/2f), r.width/2f, r.height/2f, BodyType.StaticBody);
             	bodies.add(wall);
-            	Core.stage.addActor(new SolidWall(wall, r.height/2f/Constants.PPM));
-            	
+            	if (thin) {
+            	    Core.stage.addActor(new ThinWall(wall, r.height/2f/Constants.PPM));
+            	} else {
+            	    Core.stage.addActor(new SolidWall(wall, r.height/2f/Constants.PPM));
+            	}
             } else if (object instanceof EllipseMapObject) {
             	
             	// TODO

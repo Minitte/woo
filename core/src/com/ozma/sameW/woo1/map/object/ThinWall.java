@@ -1,6 +1,7 @@
-package com.ozma.sameW.woo1.character;
+package com.ozma.sameW.woo1.map.object;
 
 import com.badlogic.gdx.physics.box2d.Body;
+import com.ozma.sameW.woo1.character.GameObject;
 import com.ozma.sameW.woo1.character.util.Message;
 import com.ozma.sameW.woo1.util.Constants;
 
@@ -20,7 +21,7 @@ public class ThinWall extends GameObject {
         if (sender.body.getPosition().y
                 - sender.sprite.getHeight() / 2f / Constants.PPM >= bodyUpperY)
             sender.processMessage(this, Message.LAND.id);
-
+        System.out.println("Touched mee: " + msg);
     }
 
     @Override
