@@ -16,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.ozma.sameW.woo1.character.GameObject;
+import com.ozma.sameW.woo1.character.ThinWall;
 import com.ozma.sameW.woo1.character.util.Message;
 import com.ozma.sameW.woo1.map.MapManager;
 
@@ -110,6 +111,19 @@ public class Core extends Game {
             public void preSolve(Contact contact, Manifold oldManifold) {
             	GameObject a = (GameObject) contact.getFixtureA().getUserData();
                 GameObject b = (GameObject) contact.getFixtureB().getUserData();
+
+                if (a instanceof ThinWall || b instanceof ThinWall) {
+                    if (a instanceof ThinWall && !(b instanceof ThinWall)) { 
+                        if (b.getBody().getLinearVelocity().y > 0) 
+                            contact.setEnabled(false);
+                    } else if (b instanceof ThinWall && !(a instanceof ThinWall)) { 
+                         if(a.getBody().getLinearVelocity().y > 0)
+                             contact.setEnabled(false);
+                    }
+                    return;
+                }
+                
+                // all others
                 if (a != null && b != null) {
 	                a.processMessage(b, Message.TOUCH.id);
 	                b.processMessage(a, Message.TOUCH.id);

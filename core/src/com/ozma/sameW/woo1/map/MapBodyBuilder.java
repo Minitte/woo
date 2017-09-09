@@ -12,7 +12,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.ozma.sameW.woo1.Core;
-import com.ozma.sameW.woo1.character.SolidWall;
+import com.ozma.sameW.woo1.map.object.SolidWall;
 import com.ozma.sameW.woo1.util.BodyBuilder;
 import com.ozma.sameW.woo1.util.Constants;
 
