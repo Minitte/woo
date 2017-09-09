@@ -14,6 +14,14 @@ public class ThinWall extends GameObject {
         this.body = body;
         body.getFixtureList().get(0).setUserData(this);
     }
+    
+    public boolean onTop(GameObject obj) {
+        float bodyUpperY = body.getPosition().y + height;
+        if (obj.body.getPosition().y
+                - obj.sprite.getHeight() / 2f / Constants.PPM >= bodyUpperY)
+            return true;
+        return false;
+    }
 
     @Override
     public void processMessage(GameObject sender, int msg) {

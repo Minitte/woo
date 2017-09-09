@@ -113,16 +113,15 @@ public class Core extends Game {
             	GameObject a = (GameObject) contact.getFixtureA().getUserData();
                 GameObject b = (GameObject) contact.getFixtureB().getUserData();
                 if (a != null && b != null) {
-                    if (a instanceof ThinWall || b instanceof ThinWall) {
-                        if (a instanceof ThinWall && !(b instanceof ThinWall)) { 
-                            if (b.getBody().getLinearVelocity().y > 0) 
-                                contact.setEnabled(false);
-                        } else if (b instanceof ThinWall && !(a instanceof ThinWall)) { 
-                             if(a.getBody().getLinearVelocity().y > 0)
-                                 contact.setEnabled(false);
-                        }
-                        return;
-                    } else if (a instanceof MapEvent_Effect) {
+                    if (a instanceof ThinWall && !(b instanceof ThinWall)) { 
+                        if (!((ThinWall)a).onTop(b)) 
+                            contact.setEnabled(false);
+                    } else if (b instanceof ThinWall && !(a instanceof ThinWall)) { 
+                         if(!((ThinWall)a).onTop(b))
+                             contact.setEnabled(false);
+                    }
+                         
+                    if (a instanceof MapEvent_Effect) {
                         contact.setEnabled(false);
                     }
                     
