@@ -1,6 +1,7 @@
-package com.ozma.sameW.woo1.character;
+package com.ozma.sameW.woo1.map.object;
 
 import com.badlogic.gdx.physics.box2d.Body;
+import com.ozma.sameW.woo1.character.GameObject;
 import com.ozma.sameW.woo1.character.util.Message;
 import com.ozma.sameW.woo1.util.Constants;
 
