@@ -1,7 +1,7 @@
-package com.ozma.sameW.woo1.map.event;
+package com.ozma.samew.woo1.map.event;
 
 import com.badlogic.gdx.physics.box2d.Body;
-import com.ozma.sameW.woo1.character.GameObject;
+import com.ozma.samew.woo1.character.GameObject;
 
 public class MapEvent_Death extends GameObject {
     

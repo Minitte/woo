@@ -1,8 +1,8 @@
-package com.ozma.woo1.desktop;
+package com.ozma.samew.woo1.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.ozma.sameW.woo1.Core;
+import com.ozma.samew.woo1.Core;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
