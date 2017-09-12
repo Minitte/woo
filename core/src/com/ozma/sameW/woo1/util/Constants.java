@@ -1,4 +1,4 @@
-package com.ozma.sameW.woo1.util;
+package com.ozma.samew.woo1.util;
 
 public class Constants {
 	

@@ -1,10 +1,10 @@
-package com.ozma.sameW.woo1.map.event;
+package com.ozma.samew.woo1.map.event;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.ozma.sameW.woo1.Core;
-import com.ozma.sameW.woo1.character.GameObject;
-import com.ozma.sameW.woo1.character.Player;
+import com.ozma.samew.woo1.Core;
+import com.ozma.samew.woo1.character.GameObject;
+import com.ozma.samew.woo1.character.Player;
 
 public class MapEvent_Warp extends GameObject{
     

@@ -1,4 +1,4 @@
-package com.ozma.sameW.woo1.character.util;
+package com.ozma.samew.woo1.character.util;
 
 public enum ObjectState {
 

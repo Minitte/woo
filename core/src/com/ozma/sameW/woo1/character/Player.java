@@ -1,4 +1,4 @@
-package com.ozma.sameW.woo1.character;
+package com.ozma.samew.woo1.character;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.ozma.sameW.woo1.Core;
-import com.ozma.sameW.woo1.character.util.Message;
-import com.ozma.sameW.woo1.util.BodyBuilder;
-import com.ozma.sameW.woo1.util.Constants;
+import com.ozma.samew.woo1.Core;
+import com.ozma.samew.woo1.character.util.Message;
+import com.ozma.samew.woo1.util.BodyBuilder;
+import com.ozma.samew.woo1.util.Constants;
 
 public class Player extends GameObject {
 

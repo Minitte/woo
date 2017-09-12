@@ -1,4 +1,4 @@
-package com.ozma.sameW.woo1;
+package com.ozma.samew.woo1;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -15,11 +15,11 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.ozma.sameW.woo1.character.GameObject;
-import com.ozma.sameW.woo1.character.util.Message;
-import com.ozma.sameW.woo1.map.MapManager;
-import com.ozma.sameW.woo1.map.event.MapEvent_Effect;
-import com.ozma.sameW.woo1.map.object.ThinWall;
+import com.ozma.samew.woo1.character.GameObject;
+import com.ozma.samew.woo1.character.util.Message;
+import com.ozma.samew.woo1.map.MapManager;
+import com.ozma.samew.woo1.map.event.MapEvent_Effect;
+import com.ozma.samew.woo1.map.object.ThinWall;
 
 public class Core extends Game {
 	

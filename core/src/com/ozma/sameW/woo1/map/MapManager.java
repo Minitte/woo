@@ -1,4 +1,4 @@
-package com.ozma.sameW.woo1.map;
+package com.ozma.samew.woo1.map;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -13,12 +13,12 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.ozma.sameW.woo1.Core;
-import com.ozma.sameW.woo1.character.Player;
-import com.ozma.sameW.woo1.map.event.MapEvent_Death;
-import com.ozma.sameW.woo1.map.event.MapEvent_Goal;
-import com.ozma.sameW.woo1.map.event.MapEvent_Warp;
-import com.ozma.sameW.woo1.util.BodyBuilder;
+import com.ozma.samew.woo1.Core;
+import com.ozma.samew.woo1.character.Player;
+import com.ozma.samew.woo1.map.event.MapEvent_Death;
+import com.ozma.samew.woo1.map.event.MapEvent_Goal;
+import com.ozma.samew.woo1.map.event.MapEvent_Warp;
+import com.ozma.samew.woo1.util.BodyBuilder;
 
 public class MapManager {
 	
