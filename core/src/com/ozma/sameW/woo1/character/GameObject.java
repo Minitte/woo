@@ -1,4 +1,4 @@
-package com.ozma.sameW.woo1.character;
+package com.ozma.samew.woo1.character;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -8,7 +8,7 @@ public abstract class GameObject extends Actor{
 	public Body body;
 	public Sprite sprite;
 	
-	public abstract void processMessage(com.ozma.sameW.woo1.character.GameObject sender, int msg);
+	public abstract void processMessage(com.ozma.samew.woo1.character.GameObject sender, int msg);
 
 	/**
 	 * teleport the game object by rebuilding body it's  at the given location

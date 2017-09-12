@@ -1,10 +1,10 @@
-package com.ozma.sameW.woo1.map.event;
+package com.ozma.samew.woo1.map.event;
 
 import com.badlogic.gdx.physics.box2d.Body;
-import com.ozma.sameW.woo1.Core;
-import com.ozma.sameW.woo1.character.EffectActor;
-import com.ozma.sameW.woo1.character.GameObject;
-import com.ozma.sameW.woo1.character.util.Message;
+import com.ozma.samew.woo1.Core;
+import com.ozma.samew.woo1.character.EffectActor;
+import com.ozma.samew.woo1.character.GameObject;
+import com.ozma.samew.woo1.character.util.Message;
 
 public class MapEvent_Effect extends GameObject{
 

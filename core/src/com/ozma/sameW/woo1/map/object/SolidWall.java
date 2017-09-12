@@ -1,9 +1,9 @@
-package com.ozma.sameW.woo1.map.object;
+package com.ozma.samew.woo1.map.object;
 
 import com.badlogic.gdx.physics.box2d.Body;
-import com.ozma.sameW.woo1.character.GameObject;
-import com.ozma.sameW.woo1.character.util.Message;
-import com.ozma.sameW.woo1.util.Constants;
+import com.ozma.samew.woo1.character.GameObject;
+import com.ozma.samew.woo1.character.util.Message;
+import com.ozma.samew.woo1.util.Constants;
 
 public class SolidWall extends GameObject {
 	

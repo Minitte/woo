@@ -1,4 +1,4 @@
-package com.ozma.sameW.woo1.map;
+package com.ozma.samew.woo1.map;
 
 import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.MapObject;
@@ -11,11 +11,11 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.ozma.sameW.woo1.Core;
-import com.ozma.sameW.woo1.map.object.SolidWall;
-import com.ozma.sameW.woo1.map.object.ThinWall;
-import com.ozma.sameW.woo1.util.BodyBuilder;
-import com.ozma.sameW.woo1.util.Constants;
+import com.ozma.samew.woo1.Core;
+import com.ozma.samew.woo1.map.object.SolidWall;
+import com.ozma.samew.woo1.map.object.ThinWall;
+import com.ozma.samew.woo1.util.BodyBuilder;
+import com.ozma.samew.woo1.util.Constants;
 
 /**
  * http://gamedev.stackexchange.com/questions/66924/how-can-i-convert-a-tilemap-to-a-box2d-world
