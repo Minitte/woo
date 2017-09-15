@@ -1,4 +1,4 @@
-package com.ozma.same.woo1;
+package com.ozma.samew.woo1;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;

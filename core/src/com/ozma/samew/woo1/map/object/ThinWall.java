@@ -1,4 +1,4 @@
-package com.ozma.same.woo1.map.object;
+package com.ozma.samew.woo1.map.object;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.ozma.samew.woo1.character.GameObject;

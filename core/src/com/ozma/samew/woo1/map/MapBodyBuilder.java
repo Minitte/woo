@@ -1,4 +1,4 @@
-package com.ozma.same.woo1.map;
+package com.ozma.samew.woo1.map;
 
 import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.MapObject;

@@ -1,4 +1,4 @@
-package com.ozma.same.woo1.character;
+package com.ozma.samew.woo1.character;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;

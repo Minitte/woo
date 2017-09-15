@@ -1,17 +1,18 @@
-package com.ozma.same.woo1.map.event;
+package com.ozma.samew.woo1.map.event;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.ozma.samew.woo1.character.GameObject;
 
-public class MapEvent_Goal extends GameObject {
-
-    public MapEvent_Goal(Body body) {
-        this.body = body;
-    }
+public class MapEvent_Death extends GameObject {
     
+    public MapEvent_Death(Body body) {
+        this.body = body;
+        body.getFixtureList().get(0).setUserData(this);
+    }
+
     @Override
     public void processMessage(GameObject sender, int msg) {
-        // TODO Auto-generated method stub
+        // kill sender
 
     }
 
