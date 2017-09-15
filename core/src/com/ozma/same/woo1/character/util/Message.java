@@ -1,4 +1,4 @@
-package com.ozma.samew.woo1.character.util;
+package com.ozma.same.woo1.character.util;
 
 public enum Message {
 	

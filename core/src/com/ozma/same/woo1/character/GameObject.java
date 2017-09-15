@@ -1,4 +1,4 @@
-package com.ozma.samew.woo1.character;
+package com.ozma.same.woo1.character;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.physics.box2d.Body;

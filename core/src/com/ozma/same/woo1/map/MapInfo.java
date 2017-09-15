@@ -1,4 +1,4 @@
-package com.ozma.samew.woo1.map;
+package com.ozma.same.woo1.map;
 
 public class MapInfo {
 

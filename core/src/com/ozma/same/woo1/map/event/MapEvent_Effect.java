@@ -1,4 +1,4 @@
-package com.ozma.samew.woo1.map.event;
+package com.ozma.same.woo1.map.event;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.ozma.samew.woo1.Core;
