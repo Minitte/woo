@@ -1,5 +1,6 @@
 package com.ozma.samew.woo1;
 
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.ozma.samew.woo1.character.GameObject;
 import com.ozma.samew.woo1.character.util.Message;
+import com.ozma.samew.woo1.gui.Menu;
 import com.ozma.samew.woo1.map.MapManager;
 import com.ozma.samew.woo1.map.event.MapEvent_Effect;
 import com.ozma.samew.woo1.map.object.ThinWall;
@@ -32,7 +34,11 @@ public class Core extends Game {
 	public static TiledMap map;
 	public static TiledMapRenderer mapRenderer;
 	
+	public static Stage curStage;
 	public static Stage stage;
+	
+	public static com.ozma.samew.woo1.gui.Menu menu;
+	public static Stage menuStage;
 	
 	// box2d
 	public static final float TIME_STEP = 0.01f;
@@ -49,6 +55,9 @@ public class Core extends Game {
 		camera.zoom = 0.5f;
 		
 		
+		menu = new Menu();
+		curStage = menu.getStage();
+		
 		// box2d
 		world = new World(new Vector2(0f, -100f), true);
 		debugRenderer = new Box2DDebugRenderer();
@@ -56,16 +65,18 @@ public class Core extends Game {
 		
 		// map
 		mapManager = new MapManager();
-		mapManager.loadMap("assets/map/test.tmx");
-		mapRenderer.setView(camera);
+//		mapManager.loadMap("assets/map/test.tmx");
+//		mapRenderer.setView(camera);
 		
 	}
 
 	@Override
 	public void render () {
 		// act
-		doPhysicsStep(Gdx.graphics.getDeltaTime());
-		stage.act();
+        if(curStage == stage) {
+            doPhysicsStep(Gdx.graphics.getDeltaTime());
+        }
+		curStage.act();
 		
 		// draw
 		Gdx.gl.glClearColor(1, 1, 0, 1);
@@ -74,12 +85,13 @@ public class Core extends Game {
 		
 		
 		camera.update();
-		mapRenderer.setView(camera);
-		mapRenderer.render();
-		
-		debugRenderer.render(world, camera.combined);
-		
-		stage.draw();
+		if(curStage == stage) {
+    		mapRenderer.setView(camera);
+    		mapRenderer.render();
+    		
+    		debugRenderer.render(world, camera.combined);
+		}
+		curStage.draw();
 	}
 	
 	@Override
